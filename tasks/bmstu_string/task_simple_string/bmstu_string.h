@@ -43,9 +43,6 @@ class simple_basic_string
 		*(ptr_ + size_) = T(0);
 	}
 
-	/// Конструктор с параметром си-с
-	/// RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-	/// -0003480938484398438282893842
 	simple_basic_string(const T* c_str)
 	{
 		auto len = strlen_(c_str);
