@@ -43,4 +43,7 @@ install(FILES ${CMAKE_SOURCE_DIR}/gdb_printer.py DESTINATION share/gdb/python)
 install(FILES ${CMAKE_SOURCE_DIR}/.gdbinit DESTINATION share/gdb)
 install(FILES ${CMAKE_SOURCE_DIR}/.lldbinit DESTINATION share/lldb)
 
+set(FAST_STREEBOG_AS_SUBDIR ON) 
+add_subdirectory(fast-streebog/fast-streebog-lib)
+
 add_subdirectory(tasks)

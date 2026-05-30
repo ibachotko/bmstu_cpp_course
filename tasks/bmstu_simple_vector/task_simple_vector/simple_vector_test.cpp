@@ -272,7 +272,7 @@
 
 // TEST(SimpleVector, Insert)
 // {
-// 	// Вставка элементов
+// 	Вставка элементов
 // 	{
 // 		bmstu::simple_vector<int> v{1, 2, 3, 4};
 // 		auto vit = v.begin() + 3;
@@ -473,10 +473,37 @@
 // 	ASSERT_EQ(original.value, 0);
 // }
 
-// TEST(SimpleVector, PushBackCopyMove3)
+// struct Vitya
 // {
-// 	bmstu::simple_vector<int> v;
-// 	v.push_back(42);
-// 	auto it = v.begin();
-// 	it = nullptr;
+// 	int age;
+// 	std::string name = "Vitya";
+
+// 	Vitya() : age(0) {}
+// 	Vitya(int a) : age(a) {}
+
+// 	bool operator==(const Vitya& other) const
+// 	{
+// 		return age == other.age && name == other.name;
+// 	}
+// };
+
+// bool func(const Vitya& a, const Vitya& b)
+// {
+// 	return a.age < b.age;
+// }
+
+// TEST(SimpleVector, Sort)
+// {
+// 	bmstu::simple_vector<Vitya> v{Vitya(-666), Vitya(2), Vitya(8), Vitya(7),
+// 								  Vitya(6),	   Vitya(5), Vitya(4), Vitya(3),
+// 								  Vitya(2),	   Vitya(1)};
+
+// 	std::sort(v.begin(), v.end(), func);
+
+// 	bmstu::simple_vector<Vitya> expected{
+// 		Vitya(-666), Vitya(1), Vitya(2), Vitya(2), Vitya(3),
+// 		Vitya(4),	 Vitya(5), Vitya(6), Vitya(7), Vitya(8)};
+
+// 	EXPECT_EQ(v.size(), expected.size());
+// 	EXPECT_EQ(v, expected);
 // }

@@ -1,5 +1,6 @@
 // #include <gtest/gtest.h>
 
+// #include <fstream>
 // #include <sstream>
 // #include "bmstu_sso_string.h"
 
@@ -375,4 +376,36 @@
 // 	bmstu::string long_str("This is a very long string");
 // 	ASSERT_FALSE(long_str.is_using_sso());
 // 	ASSERT_GE(long_str.capacity(), long_str.size());
+// }
+
+// TEST(SSOStringTest, SSOBehaviour)
+// {
+// 	bmstu::wstring short_str(L"лол");
+// 	bmstu::wstring short_str2(L"кек");
+
+// 	auto str3 = short_str + short_str2;
+
+// 	ASSERT_FALSE(short_str.is_long());
+// }
+
+// TEST(SSOStringTest, SSOBehaviour2)
+// {
+// 	bmstu::wstring short_str(L"лол111");
+// 	bmstu::wstring short_str2(L"кек11");
+
+// 	auto str3 = short_str + short_str2;
+
+// 	ASSERT_FALSE(short_str.is_long());
+// }
+
+// TEST(SSOStringTest, SSOTests)
+// {
+// 	bmstu::string short_str("1234");
+// 	short_str.reverse();
+// 	bmstu::string exp("4321");
+// 	bmstu::string exp2("1234");
+// 	ASSERT_EQ(short_str, exp);
+// 	short_str.reverse();
+// 	short_str.reverse().reverse();
+// 	ASSERT_EQ(short_str, exp2);
 // }

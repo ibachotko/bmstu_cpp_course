@@ -16,10 +16,10 @@ foreach (TASK ${TASKS})
     list(APPEND SOURCES ${FILES})
 endforeach ()
 message(STATUS "SOURCES: ${SOURCES}")
-# add_executable(${NAME_EXECUTABLE} ${SOURCES})
-# target_link_libraries(
-#        ${NAME_EXECUTABLE}
-#        GTest::gtest_main
-#)
+add_executable(${NAME_EXECUTABLE} ${SOURCES})
+ target_link_libraries(
+        ${NAME_EXECUTABLE}
+        GTest::gtest_main
+)
 
-#gtest_discover_tests(${NAME_EXECUTABLE})
+gtest_discover_tests(${NAME_EXECUTABLE})

@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <algorithm>
+#include <list>
 
 TEST(BidirectLinkedListTests, init)
 {
@@ -535,4 +536,51 @@ TEST(BidirectLinkedListTests, from_vector)
 										"string4"s, "string5"s, "string6"s,
 										"string7"s, "end_string"s}),
 			  my_vec);
+}
+
+struct A
+{
+	A() { std::cout << "A()\n"; }
+	~A() { std::cout << "~A()\n"; }
+	virtual void bryak() = 0;
+};
+
+struct B : public A
+{
+	B() { std::cout << "B()\n"; }
+	~B() { std::cout << "~B()\n"; }
+	void bryak() override { std::cout << "bryak B\n"; }
+};
+
+struct C : public A
+{
+	C() { std::cout << "C()\n"; }
+	~C() { std::cout << "~C()\n"; }
+	void bryak() override { std::cout << "bryak C\n"; }
+};
+
+struct D : public B, public C
+{
+	D() { std::cout << "D()\n"; }
+	~D() { std::cout << "~D()\n"; }
+};
+
+template <typename Cont, typename T>
+auto returnFirstFind(Cont& cont, const T& needle) -> typename Cont::iterator
+{
+	// T
+
+	return std::find(cont.begin(), cont.end(), needle);
+}
+TEST(BidirectLinkedListTests, Iter)
+{
+	std::vector<int> vec = {1, 2, 3, 4, 5};
+	std::vector<int>::iterator it = vec.begin() + 1;
+	auto it_actual = returnFirstFind(vec, 2);
+	ASSERT_EQ(*it, *it_actual);
+
+	std::list<double> lst = {1, 2, 3, 4, 5};
+	std::list<double>::iterator it2 = std::next(lst.begin());
+	auto it_actual2 = returnFirstFind(lst, 2.0);
+	ASSERT_EQ(*it2, *it_actual2);
 }
